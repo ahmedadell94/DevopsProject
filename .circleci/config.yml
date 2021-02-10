@@ -16,12 +16,14 @@ executors:
 jobs:
 ########CI #########
   install:
-    executor: node
+    #executor: node
+    docker:
+      - image: ocircleci/node:13.8.0
     steps:
     - checkout
     - run:
         name: npm install 
-        working_directory: ./project
+        #working_directory: ./project
         command: ls -la && npm install 
     - persist_to_workspace:
         root: ./project
