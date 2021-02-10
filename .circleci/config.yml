@@ -3,9 +3,9 @@ version: 2.1
 executors:
   node:
     docker:
-      - image: ocircleci/node:13.8.0
+      - image: circleci/node:13.8.0
         auth:
-          username: ahmedadell94  
+          username: $DOCKERHUB_USERNAME  
           password: $DOCKERHUB_PASSWORD 
   aws:
     docker:
