@@ -4,7 +4,9 @@ executors:
   node:
     docker:
       - image: ocircleci/node:13.8.0
-      
+        auth:
+          username: ahmedadell94  
+          password: $DOCKERHUB_PASSWORD 
   aws:
     docker:
       - image: amazon/aws-cli
@@ -16,15 +18,13 @@ executors:
 jobs:
 ########CI #########
   install:
-    #executor: node
-    docker:
-      - image: ocircleci/node:13.8.0
+    executor: node
     steps:
     - checkout
     - run:
         name: npm install 
-        #working_directory: ./project
-        command: ls -la && npm install 
+        working_directory: ./project
+        command: ls -la && npm install
     - persist_to_workspace:
         root: ./project
         paths:
